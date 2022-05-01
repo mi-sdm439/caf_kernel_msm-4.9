@@ -1558,14 +1558,10 @@ static ssize_t fts_test_show(struct device *dev, struct device_attribute *attr, 
 		break;
 	}
 
-	switch (ito_test_result) {
-	case true:
+	if (ito_test_result)
 		num_read_chars = snprintf(buf, PAGE_SIZE, "Pass\n");
-		break;
-	case false:
+	else
 		num_read_chars = snprintf(buf, PAGE_SIZE, "Failed\n");
-		break;
-	}
 
 	return num_read_chars;
 }
